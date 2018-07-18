@@ -1,4 +1,8 @@
 # rq-scheduler
+[![NPM version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Downloads][downloads-image]][downloads-url]
+
 ## Installation
 npm install rq-scheduler
 ## Usage
@@ -53,3 +57,11 @@ testQueue.deljob('121')
 ## Comparison with `Timed Queue`
 It is base on [Timed Queue](https://github.com/teambition/timed-queue) and **support one job add multi-time** 
 
+[npm-url]: https://npmjs.org/package/rq-scheduler
+[npm-image]: http://img.shields.io/npm/v/rq-scheduler.svg
+
+[travis-url]: https://travis-ci.org/gaohuifeng/rq-scheduler
+[travis-image]: https://travis-ci.org/gaohuifeng/rq-scheduler.svg?branch=master
+
+[downloads-url]: https://npmjs.org/package/rq-scheduler
+[downloads-image]: https://img.shields.io/github/downloads/atom/atom/latest/total.svg

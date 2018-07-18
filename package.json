@@ -4,7 +4,7 @@
   "description": "Distributed timed job queue, backed by Redis.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard && tman test/index.js"
   },
   "repository": {
     "type": "git",
@@ -15,6 +15,9 @@
   ],
   "author": "773918831@qq.com",
   "license": "ISC",
+  "engines": {
+    "node": ">= 4.5.0"
+  },
   "bugs": {
     "url": "https://github.com/gaohuifeng/rq-scheduler/issues"
   },
@@ -23,5 +26,10 @@
     "thunks": "^4.9.2",
     "timed-queue": "^1.2.2",
     "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "standard": "^11.0.1",
+    "tman": "^1.8.0",
+    "thunk-queue": "^1.2.0"
   }
 }

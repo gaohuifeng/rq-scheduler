@@ -1,7 +1,6 @@
-iconst TimedQueue = require('timed-queue')
+const TimedQueue = require('timed-queue')
 const uuidv4 = require('uuid/v4')
 const thunk = require('thunks')()
-
 class TQueue extends TimedQueue {
   constructor (options) {
     options = options || {}
@@ -78,4 +77,3 @@ function filer (dataArray) {
 }
 
 module.exports = TQueue
-
