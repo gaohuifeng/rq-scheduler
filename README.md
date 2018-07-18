@@ -1,8 +1,8 @@
 # rq-scheduler
-## install
+## Installation
 npm install rq-scheduler
-## usage
-```
+## Usage
+```js
 const TQueue = require('rq-scheduler')
 const tQueue = new TQueue({prefix: 'TQ1', interval: 1000})
 
@@ -25,6 +25,7 @@ testQueue.on('job', function (jobObj) {
   //   timing: 1531914416025,
   //   active: 1531927285969,
   //   retryCount: 92 }
+  console.log('job id: ', jobObj.job.split('$')[0])
   testQueue.ackjob(jobObj.job)
 })
 
@@ -45,6 +46,10 @@ require('co')(function * () {
 })
 
 // delete job
-testQueue.deljob('121') // return promise
+// return promise
+testQueue.deljob('121')
 
 ```
+## Comparison with `Timed Queue`
+It is base on [Timed Queue](https://github.com/teambition/timed-queue) and **support one job add multi-time** 
+
