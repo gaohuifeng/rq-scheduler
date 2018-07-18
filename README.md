@@ -2,7 +2,7 @@
 ## Installation
 npm install rq-scheduler
 ## Usage
-```
+```js
 const TQueue = require('rq-scheduler')
 const tQueue = new TQueue({prefix: 'TQ1', interval: 1000})
 
