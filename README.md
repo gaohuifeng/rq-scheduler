@@ -51,5 +51,5 @@ testQueue.deljob('121')
 
 ```
 ## Comparison with `Timed Queue`
-It is base on [Timed Queue](https://github.com/teambition/timed-queue) And >**support one job add multi-time** 
+It is base on [Timed Queue](https://github.com/teambition/timed-queue) and **support one job add multi-time** 
 
