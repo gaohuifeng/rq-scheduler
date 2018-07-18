@@ -1,0 +1,27 @@
+{
+  "name": "rq-scheduler",
+  "version": "1.0.0",
+  "description": "Distributed timed job queue, backed by Redis.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gaohuifeng/rq-scheduler.git"
+  },
+  "keywords": [
+    "scheduler"
+  ],
+  "author": "773918831@qq.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gaohuifeng/rq-scheduler/issues"
+  },
+  "homepage": "https://github.com/gaohuifeng/rq-scheduler#readme",
+  "dependencies": {
+    "thunks": "^4.9.2",
+    "timed-queue": "^1.2.2",
+    "uuid": "^3.3.2"
+  }
+}
