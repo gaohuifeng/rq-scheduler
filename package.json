@@ -12,7 +12,7 @@
       "pre-commit": "babel src -d dist && git add dist/index.js",
       "pre-push": "npm test"
     }
-  },  
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gaohuifeng/rq-scheduler.git"
