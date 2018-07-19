@@ -9,7 +9,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "babel src -d dist && git add dist/index.js",
+      "pre-commit": "babel src -d ./dist && git add ./dist/tQueue.js",
       "pre-push": "npm test"
     }
   },
