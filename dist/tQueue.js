@@ -9,7 +9,7 @@ var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 let getAllJobsById = (() => {
-  var _ref3 = (0, _asyncToGenerator3.default)(function* (pattern, cursor = 0) {
+  var _ref4 = (0, _asyncToGenerator3.default)(function* (pattern, cursor = 0) {
     const self = this;
     const d = yield new _promise2.default(function (resolve, reject) {
       thunk(function* () {
@@ -30,8 +30,8 @@ let getAllJobsById = (() => {
     }
   });
 
-  return function getAllJobsById(_x4) {
-    return _ref3.apply(this, arguments);
+  return function getAllJobsById(_x5) {
+    return _ref4.apply(this, arguments);
   };
 })();
 
@@ -50,12 +50,15 @@ class TQueue extends TimedQueue {
     const queue = super.queue(queueName, options);
     const originAddJobFn = queue.addjob;
     const originDelFn = queue.deljob;
+    const originGetjobsFn = queue.getjobs;
 
     Object.defineProperty(queue, 'addjob', {
       get: () => (() => {
         var _ref = (0, _asyncToGenerator3.default)(function* (job, timing) {
           const self = this;
           return new _promise2.default(function (resolve, reject) {
+            // job: '5b4d4dccaabd71111111111c'
+            // attachUUID(job): '5b4d4dccaabd71111111111c$0111111111114349a338f16ef715fcd5'
             originAddJobFn.call(self, attachUUID(job), timing)(function (err, result) {
               if (err) return reject(err);
               resolve(result);
@@ -74,6 +77,7 @@ class TQueue extends TimedQueue {
         var _ref2 = (0, _asyncToGenerator3.default)(function* (job) {
           const pattern = job + '$*';
           const self = this;
+          // redis.zscan key cursor match `5b4d4dccaabd71111111111c$*`
           const jobIds = yield getAllJobsById.call(this, pattern);
           jobIds.push(job);
           return new _promise2.default(function (resolve, reject) {
@@ -89,6 +93,32 @@ class TQueue extends TimedQueue {
         };
       })()
     });
+
+    Object.defineProperty(queue, 'getjobs', {
+      get: () => (() => {
+        var _ref3 = (0, _asyncToGenerator3.default)(function* (scanActive) {
+          const self = this;
+          const data = yield new _promise2.default(function (resolve, reject) {
+            originGetjobsFn.call(self, scanActive)(function (err, result) {
+              if (err) return reject(err);
+              resolve(result);
+            });
+          });
+          data.jobs = data.jobs.map(function (job) {
+            // job: '5b4d4dccaabd71111111111c$0111111111114349a338f16ef715fcd5'
+            // id: '5b4d4dccaabd71111111111c'
+            job.id = job.job.split('$')[0];
+            return job;
+          });
+          return data;
+        });
+
+        return function (_x4) {
+          return _ref3.apply(this, arguments);
+        };
+      })()
+    });
+
     return queue;
   }
 }

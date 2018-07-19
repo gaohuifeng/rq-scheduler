@@ -71,8 +71,10 @@ function attachUUID (str) {
   return str + '$' + uuidv4().replace(/-/g, '')
 }
 
-async function getAllJobsById (pattern, cursor = 0) {
+async function getAllJobsById (pattern, cursor) {
   const self = this
+  // for support node v4.5, not use func default assignment: cursor = 0
+  cursor = cursor || 0
   const d = await new Promise(function (resolve, reject) {
     thunk(function * () {
       return yield self.root.redis.zscan(self.queueKey, cursor, 'match', pattern)

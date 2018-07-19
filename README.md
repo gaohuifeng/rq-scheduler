@@ -26,10 +26,11 @@ testQueue.on('job', function (jobObj) {
   // jobObj : {
   //   queue: 'testetst',
   //   job: '121$6bcef79e64fd41db9c9972d923cd49c9',
+  //   id: '121',
   //   timing: 1531914416025,
   //   active: 1531927285969,
   //   retryCount: 92 }
-  console.log('job id: ', jobObj.job.split('$')[0])
+  console.log('job id: ', jobObj.id)
   testQueue.ackjob(jobObj.job)
 })
 

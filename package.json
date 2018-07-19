@@ -1,6 +1,6 @@
 {
   "name": "rq-scheduler",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Distributed timed job queue, backed by Redis.",
   "main": "index.js",
   "scripts": {
@@ -35,7 +35,8 @@
   },
   "devDependencies": {
     "standard": "^11.0.1",
-    "tman": "^1.8.0",
-    "thunk-queue": "^1.2.0"
+    "thunk-queue": "^1.2.0",
+    "thunk-redis": "^2.2.0",
+    "tman": "^1.8.0"
   }
 }
