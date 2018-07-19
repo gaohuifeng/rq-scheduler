@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src -d dist",
-    "test": "standard src/*.js && tman test/index.js"
+    "test": "standard src/*.js && tman test/index.js",
+    "precommit": "babel src -d dist && git add dist/index.js"
   },
   "repository": {
     "type": "git",
