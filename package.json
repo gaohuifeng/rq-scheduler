@@ -1,6 +1,6 @@
 {
   "name": "rq-scheduler",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Distributed timed job queue, backed by Redis.",
   "main": "index.js",
   "scripts": {
