@@ -9,8 +9,10 @@ var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 let getAllJobsById = (() => {
-  var _ref4 = (0, _asyncToGenerator3.default)(function* (pattern, cursor = 0) {
+  var _ref4 = (0, _asyncToGenerator3.default)(function* (pattern, cursor) {
     const self = this;
+    // for support node v4.5, not use func default assignment: cursor = 0
+    cursor = cursor || 0;
     const d = yield new _promise2.default(function (resolve, reject) {
       thunk(function* () {
         return yield self.root.redis.zscan(self.queueKey, cursor, 'match', pattern);
@@ -30,7 +32,7 @@ let getAllJobsById = (() => {
     }
   });
 
-  return function getAllJobsById(_x5) {
+  return function getAllJobsById(_x5, _x6) {
     return _ref4.apply(this, arguments);
   };
 })();
